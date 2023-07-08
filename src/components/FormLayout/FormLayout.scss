@@ -1,0 +1,21 @@
+.lrf-main{
+    background-image: url("../../assets/images/Bg.png");
+    background-repeat: none;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.logo{
+    img{
+        width: 350px;
+        
+        @media screen and (max-width: 991px) {
+            width: 300px;
+        }
+        @media screen and (max-width: 576px) {
+            width: 250px;
+        }
+    }
+}
