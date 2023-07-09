@@ -18,13 +18,17 @@ export default function MUICustomInput({label, icon, ...props}) {
 
   //using formik
   const [field, meta] = useField(props);
-  console.log(field)
-  console.log(meta)  
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const changeHandler = (e)=>{
+    field.onChange(e)
+    setCurrentValue(e.target.value)
+  }
+
+  const blurHandler = (e)=>{
+    field.onBlur(e)
+    setFocused(false);
+  }
 
   //css
   const inputLabelCSS = {
@@ -47,6 +51,7 @@ export default function MUICustomInput({label, icon, ...props}) {
     fontSize: "14px",
     height: "46px",
     marginTop: "0px !important",
+    
     ".MuiInput-input":{
       marginTop: "auto",
     },
@@ -90,7 +95,6 @@ export default function MUICustomInput({label, icon, ...props}) {
                   <IconButton
                     aria-label="toggle password visibility"
                     onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
                     sx={{p:0, color:"#AAAAAA", fontSize: "20px"}}
                   >
                     {showPassword ?<IoMdEyeOff /> : <IoMdEye />}
@@ -108,11 +112,11 @@ export default function MUICustomInput({label, icon, ...props}) {
                 :
                 null
               }
-              value={currentValue}
-              onChange={(e) => {setCurrentValue(e.target.value)}}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
               {...field}
+              
+              onFocus={() => setFocused(true)}
+              onBlur={blurHandler}
+              onChange={changeHandler}
               {...props}
             />
           </FormControl>

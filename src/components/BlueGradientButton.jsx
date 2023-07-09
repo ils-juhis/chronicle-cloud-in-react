@@ -15,12 +15,12 @@ function BlueGradientButton({label, width}) {
     }
   return (
     <div>
-        <button className='text-light w-100 p-2 mt-2' 
+        <button className='text-light w-100 p-2 mt-3' 
             style={buttonCSS} type='submit'
             onMouseEnter={() => setHover(true)}
             onMouseLeave= {() => setHover(false)}>
 
-                {label}
+              {label}
                 
         </button>
     </div>
