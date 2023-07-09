@@ -1,14 +1,39 @@
+@mixin buttoncode {
+    border-radius: 6px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+
+    &:hover{
+        filter: contrast(1.15);
+    }
+}
+
 #login-form{
+    font-size: 13px;
+
     .content{
         text-align: left;
-        font-size: 13px;
         color: #000000;
         opacity: 0.5;
-
         @media screen and (min-width: 1700px) {
             font-size: 18px;
         }
     }
 
-    
+    .rem-forget{
+        #rememberCheck:checked {
+            border-color: #00000033 !important; 
+            background-color: #08D152 !important;
+        }
+        
+    }
+
+    #register{
+        background: #FEC006 0% 0% no-repeat padding-box;
+        box-shadow: 0px 1px 10px #0000001A;     
+        @include buttoncode()
+   
+    }
 }
