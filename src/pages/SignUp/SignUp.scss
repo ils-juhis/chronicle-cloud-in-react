@@ -1,10 +1,13 @@
 @import "../../assets/scss/mixin";
 
-#forgot-pwd-form{
+#signup-form{
     @include mutedContent;
 
-    button[type="submit"]{
-        width: 100%;
+    .next{
         @include blueRadientBtn();
+    }
+
+    #login-btn{
+        @include yellowRadientBtn();
     }
 }

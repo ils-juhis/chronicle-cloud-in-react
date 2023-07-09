@@ -5,7 +5,6 @@ import { Form, Formik } from 'formik'
 import MUICustomInput from '../../components/MUICustomInput/MUICustomInput'
 import emailLogo from '../../assets/images/email.svg'
 import { forgotPwdSchema } from '../../schema/AllSchemas'
-import BlueGradientButton from '../../components/BlueGradientButton'
 
 function ForgotPassword() {
   return (
@@ -22,15 +21,22 @@ function ForgotPassword() {
               onSubmit={(values)=>{
                 console.log(values)
               }}>
+
+              {
+                formik =>{
+                  return (
+                    <Form>
+                      <MUICustomInput 
+                        label="Email" 
+                        name="email"
+                        type="text"
+                        icon={emailLogo}/>
+                      <button className='text-light p-2 px-3 mt-3 text-uppercase' type='submit' disabled={!(formik.dirty && formik.isValid)}>retrive password</button>
+                    </Form>
+                  )
+                }
+              }
               
-              <Form>
-                <MUICustomInput 
-                  label="Email" 
-                  name="email"
-                  type="text"
-                  icon={emailLogo}/>
-                <BlueGradientButton label="retrive password" width="100%" />
-              </Form>
             </Formik>
           </div>
         </div>

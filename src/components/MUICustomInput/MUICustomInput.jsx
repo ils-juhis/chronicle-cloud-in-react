@@ -19,7 +19,10 @@ export default function MUICustomInput({label, icon, ...props}) {
   //using formik
   const [field, meta] = useField(props);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword)
+    console.log(showPassword)
+  };
   const changeHandler = (e)=>{
     field.onChange(e)
     setCurrentValue(e.target.value)
@@ -76,7 +79,7 @@ export default function MUICustomInput({label, icon, ...props}) {
 
   return (
     <div>
-      <Box sx={{backgroundColor:'#F7FAFF', mt:0.5, overflow: "hidden", borderRadius: "6px",  border: "1px solid #DDDDDD",}}>
+      <Box sx={{backgroundColor:'#F7FAFF', mt:0.3, overflow: "hidden", borderRadius: "6px",  border: "1px solid #DDDDDD",}}>
         <div className='w-100'>
           <FormControl sx={{ width:"100%"}} variant="standard">
 
@@ -85,12 +88,11 @@ export default function MUICustomInput({label, icon, ...props}) {
             <Input
               sx={inputCSS}
               id="standard-adornment-password"
-              type={(type!=="password" || showPassword) ? 'text' : 'password'}
               name={name}
-
+              type={(type!=="password" || showPassword) ? 'text' : 'password'}
               autoComplete="off"
               endAdornment={
-                label==="Password" ?
+                (name==="password" || name==="confirmPassword") ?
                 <InputAdornment position="end">
                   <IconButton
                     aria-label="toggle password visibility"
@@ -111,13 +113,10 @@ export default function MUICustomInput({label, icon, ...props}) {
                 </InputAdornment>
                 :
                 null
-              }
-              {...field}
-              
+              }              
               onFocus={() => setFocused(true)}
               onBlur={blurHandler}
               onChange={changeHandler}
-              {...props}
             />
           </FormControl>
         </div>

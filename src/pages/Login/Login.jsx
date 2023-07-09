@@ -7,7 +7,6 @@ import './Login.scss'
 import { Form, Formik } from 'formik'
 import { loginSchema } from '../../schema/AllSchemas'
 import { Link } from 'react-router-dom'
-import BlueGradientButton from '../../components/BlueGradientButton'
 
 function Login() {
   return (
@@ -49,7 +48,7 @@ function Login() {
                   <Link className="text-primary text-decoration-none fw-bold" to="forgot-pwd">   Forgot Password?    </Link>
                 </div>
 
-                <BlueGradientButton label="login" width="100%" />
+                <button className='text-light p-2 px-3 mt-3 text-uppercase' type='submit'>login</button>
 
                 <div className="d-flex justify-content-between pt-4 align-items-center">
                     <div className="fw-bold" >Don't have an account?</div>
