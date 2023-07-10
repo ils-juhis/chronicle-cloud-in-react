@@ -1,12 +1,9 @@
 .lrf-form{
     width: 400px;
 
-    @media screen and (min-width: 1920px) {
-        width: 500px;
-    }
-
+ 
     @media screen and (min-width: 1700px) {
-        width: 470px;
+        width: 450px;
     }
 
     @media screen and (max-width: 450px) {
@@ -18,10 +15,10 @@
         box-shadow: 0px 1px 6px #00000029;
         border-radius: 20px;
         opacity: 1;
-        padding:40px 30px ;
+        padding:40px 30px 25px;
 
         @media screen and (max-width: 450px) {
-            padding:30px 25px ;
+            padding:30px 25px 25px;
         }
 
         .heading{
@@ -36,7 +33,7 @@
     }
 
     .info{
-        font-size: 11px;
+        font-size: 12px;
     }
     
 }

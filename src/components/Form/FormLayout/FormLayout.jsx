@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import './FormLayout.scss'
-import logo from '../../assets/images/Logo.svg'
+import logo from '../../../assets/images/Logo.svg'
 import { Outlet } from 'react-router-dom';
 
 const FormLayout = () => {

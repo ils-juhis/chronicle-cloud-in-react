@@ -1,6 +1,6 @@
 import React from 'react'
-import FormCard from '../../components/FormCard/FormCard'
-import MUICustomInput from '../../components/MUICustomInput/MUICustomInput'
+import FormCard from '../../components/Form/FormCard/FormCard'
+import MUICustomInput from '../../components/Form/MUICustomInput'
 import emailLogo from '../../assets/images/email.svg'
 import padlock from '../../assets/images/padlock.svg'
 import './Login.scss'
@@ -53,7 +53,7 @@ function Login() {
                 <div className="d-flex justify-content-between pt-4 align-items-center">
                     <div className="fw-bold" >Don't have an account?</div>
                     <Link to="sign-up">
-                      <button className="p-2" id="register">Register now</button>
+                      <button className="p-2 text-uppercase" id="register">Register now</button>
                     </Link>
                 </div>
 

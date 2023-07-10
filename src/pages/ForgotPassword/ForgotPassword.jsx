@@ -1,8 +1,8 @@
 import React from 'react'
-import FormCard from '../../components/FormCard/FormCard'
+import FormCard from '../../components/Form/FormCard/FormCard'
 import './ForgotPassword.scss'
 import { Form, Formik } from 'formik'
-import MUICustomInput from '../../components/MUICustomInput/MUICustomInput'
+import MUICustomInput from '../../components/Form/MUICustomInput'
 import emailLogo from '../../assets/images/email.svg'
 import { forgotPwdSchema } from '../../schema/AllSchemas'
 

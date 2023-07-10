@@ -4,7 +4,7 @@ import Login from './pages/Login/Login'
 import SignUp from './pages/SignUp/SignUp'
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import Dashboard from './pages/Dashboard/Dashboard';
-import FormLayout from './components/FormLayout/FormLayout';
+import FormLayout from './components/Form/FormLayout/FormLayout';
 
 
 function App() {

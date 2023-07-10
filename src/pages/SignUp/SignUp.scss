@@ -3,11 +3,89 @@
 #signup-form{
     @include mutedContent;
 
+    .phone-box{
+        position: relative;
+        .react-tel-input{
+            input{
+                padding-top: 25px;
+                &:focus{
+                outline: none !important;
+                box-shadow: none !important;
+                border-bottom: 2px solid #386CB5 !important;
+            }
+            }
+        }
+
+        .label{
+            position: absolute;
+            top: 50%;
+            left: 60px;
+            transform: translateY(-50%);
+            color: #000000;
+            opacity: 0.6;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        &:has(input:focus) .label, &:has(input:valid) .label{
+            color: #222222;
+            opacity: 0.4;
+            font-size: 11px;
+            top: 3px;
+            transform: translateY(0);
+        }
+    }        
+    
+
+    .reg-steps{
+        color: #386CB5;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 16px;
+        text-align: center;
+
+        .txt{
+            margin-bottom: 5px;
+        }
+
+        .underline{
+            height: 4px;
+            background: #386CB5 0% 0% no-repeat padding-box;
+            border-radius: 2px;
+        }
+    }
+
     .next{
         @include blueRadientBtn();
     }
 
+    .back{
+        border: none;
+        outline: none;
+        font-weight: 600;
+        background-color: transparent;
+
+        img{
+            width: 17px;
+        }
+    }
+
     #login-btn{
         @include yellowRadientBtn();
+    }
+
+    .form-check{
+        a{
+            color: #386CB5;
+        }
+    }
+
+    #condition-check:checked{
+        border-color: #00000033 !important; 
+        background-color: #08D152 !important;
+    }
+
+    button[type="submit"]{
+        @include blueRadientBtn();
     }
 }
