@@ -1,18 +1,33 @@
 @import "../../assets/scss/mixin";
 
+/*CSS for <SignUp>, <PhoneCustomInput>, <FormNavigation>*/
 #signup-form{
     @include mutedContent;
 
     .phone-box{
         position: relative;
         .react-tel-input{
-            input{
+            input[name="phone"]{
+                padding-left: 60px;
+                background-color: #F7FAFF;
+                width: 100%;
+                height: 46px;
+                border: 1px solid #DDDDDD;
+                border-radius: 6px;
                 padding-top: 25px;
+
                 &:focus{
-                outline: none !important;
-                box-shadow: none !important;
-                border-bottom: 2px solid #386CB5 !important;
+                    outline: none !important;
+                    box-shadow: none !important;
+                    border-bottom: 2px solid #386CB5 !important;
+                }
+                
             }
+
+            input.err {
+                &:focus{
+                    border-bottom: 2px solid #FF0000 !important;
+                }
             }
         }
 

@@ -5,10 +5,8 @@ import 'react-phone-input-2/lib/style.css'
 
 function PhoneCustomInput(props) {
   const [country, setCountry] = useState('us')
-
     //using formik
     const [field, meta] = useField(props);
-
     const errorCSS={
       "color": "#FF0000",
       "font":" normal normal 500 10px/17px Open Sans"
@@ -30,15 +28,9 @@ function PhoneCustomInput(props) {
         <PhoneInput
             placeholder=""
             country={country}
-            name= {props.name}
-            inputStyle={{
-                paddingLeft: "60px",
-                backgroundColor: "#F7FAFF",
-                width: "100%",
-                height: "46px",
-                border: "1px solid #DDDDDD",
-                borderRadius: "6px",
-            }}
+            enableSearch= {true}
+            disableSearchIcon={true}
+            inputClass={(meta.touched && meta.error) ? "err" : null}
             buttonStyle={{
                 width:"46px",
                 backgroundColor: "white",
@@ -51,7 +43,16 @@ function PhoneCustomInput(props) {
             }}
 
             {...field}
-            
+            {...props}
+
+            onChange={(value, country, e, formattedValue)=>{
+                if(e.target.type === "tel"){
+                  e.target.value= e.target.value.replace(/ /g, "").replace(/-/g, "");
+                  field.onChange(e);
+                }
+              }
+            }
+
             />
           <div className="label"> Mobile Number</div>
           <div style={errorCSS}>
