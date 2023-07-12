@@ -17,15 +17,17 @@ function MultiStepForm({children, initialValues, onSubmit}) {
     const next = (values)=>{
         setSnapshot(values)
         setStepNumber(Math.min(stepNumber + 1, totalSteps - 1));
+        console.log(snapshot)
     }
 
-    const back = (values)=>{
+    const back = (values, actions)=>{
         setSnapshot(values)
         setStepNumber(Math.max(stepNumber - 1, 0));
+        console.log(snapshot)
+
     }
 
     const handleSubmit = async (values, actions)=>{
-        console.log("hii")
         if(step.props.onSubmit){
             await step.props.onSubmit(values, actions)
         }
@@ -52,8 +54,9 @@ function MultiStepForm({children, initialValues, onSubmit}) {
                         {step}
                         <FormNavigation 
                             isLastStep={isLastStep} 
+                            err={formik.errors}
                             hasPrevious={stepNumber>0} 
-                            onBackClick={()=>{back(formik.values)}}
+                            onBackClick={()=>{back(formik.values, formik.ac)}}
                             disabled={!(formik.dirty && formik.isValid)}
                         />
                     </Form>

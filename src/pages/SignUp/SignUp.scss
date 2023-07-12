@@ -103,4 +103,10 @@
     button[type="submit"]{
         @include blueRadientBtn();
     }
+
+    .error{
+        color: #FF0000;
+        font:normal normal 500 10px/17px Open Sans
+    }
+    
 }

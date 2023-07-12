@@ -7,8 +7,11 @@ import padlock from '../../assets/images/padlock.svg'
 import { signupStep1Schema, signupStep2Schema } from '../../schema/AllSchemas'
 import PhoneCustomInput from '../../components/Form/PhoneCustomInput'
 import MultiStepForm, { FormStep } from '../../components/Form/MultiStepForm'
+import Checkbox from '../../components/Form/Checkbox'
 
 function SignUp() {
+
+  //for checkbox
   
   return (
     <div className='my-5'>
@@ -74,7 +77,7 @@ function SignUp() {
 
               <PhoneCustomInput name="phone" type="text"/>
               
-              <div className="fw-bold h-4 mt-4 mb-2">Create Password</div>
+              <div className="fw-bold h-4 mt-4 fs-6 mb-1">Create Password</div>
               <div className="content mb-3"> Password must contain one special character, one capital letter and be at least 6 characters long. </div>
 
               <MUICustomInput 
@@ -120,18 +123,7 @@ function SignUp() {
                 name="zipCode" 
                 type="text"/>
 
-              <div className="rem-forget my-2 ">
-                <div className="form-check ">
-                  <input className="form-check-input shadow-none rounded-circle" name='termsAndConditions'  type="checkbox" id="condition-check"/>
-                  <label className="form-check-label" htmlFor="flexCheckIndeterminate">
-                    I agree to the &nbsp;
-                    <a href="" className="fw-bold text-decoration-none ">Terms of service &nbsp;</a> 
-                    and &nbsp;
-                    <a href="#" className="fw-bold text-decoration-none ">Privacy Policy &nbsp;</a>.
-                  </label>
-                </div>
-                <div className="invalid-error" id="uncheck-terms">&nbsp;</div>
-              </div>
+              <Checkbox/>
             </FormStep>
             
           </MultiStepForm>

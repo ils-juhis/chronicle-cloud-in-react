@@ -1,10 +1,13 @@
 import { ErrorMessage, useField } from 'formik';
 import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+import { getCurrentCountry } from '../../store/actions';
 
 function PhoneCustomInput(props) {
   const [country, setCountry] = useState('us')
+  const [number, setNumber] = useState("")
     //using formik
     const [field, meta] = useField(props);
     const errorCSS={
@@ -12,22 +15,19 @@ function PhoneCustomInput(props) {
       "font":" normal normal 500 10px/17px Open Sans"
     }
   
+    const dispatch = useDispatch();
+    const currentCountry  = useSelector((state)=> state.reducers.currentCountry)
 
   useEffect(()=>{
-    fetch('https://ipinfo.io/json?token=6978337c394849', { headers: { 'Accept': 'application/json' }})
-      .then((resp) => resp.json())
-      .catch(() => {
-        setCountry('us')
-      })
-      .then((resp) => setCountry(resp.country.toLowerCase()));
-     
-  },[country])
+    setNumber(field.value)
+    dispatch(getCurrentCountry())
+  },[currentCountry, number])
 
   return (
     <div className='phone-box'>
         <PhoneInput
             placeholder=""
-            country={country}
+            country={currentCountry}
             enableSearch= {true}
             disableSearchIcon={true}
             inputClass={(meta.touched && meta.error) ? "err" : null}
@@ -40,19 +40,19 @@ function PhoneCustomInput(props) {
             inputProps={{
                 name: 'phone',
                 required: true,
+                autoComplete: "off",
             }}
 
-            {...field}
             {...props}
-
+            value={number}
             onChange={(value, country, e, formattedValue)=>{
                 if(e.target.type === "tel"){
                   e.target.value= e.target.value.replace(/ /g, "").replace(/-/g, "");
                   field.onChange(e);
+                  setNumber(e.target.value)
                 }
               }
             }
-
             />
           <div className="label"> Mobile Number</div>
           <div style={errorCSS}>

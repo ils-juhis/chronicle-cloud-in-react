@@ -14,19 +14,13 @@ export default function MUICustomInput({label, icon, ...props}) {
 
   const [focused, setFocused] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [currentValue, setCurrentValue] = React.useState("");
 
   //using formik
   const [field, meta] = useField(props);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
-    console.log(showPassword)
   };
-  const changeHandler = (e)=>{
-    field.onChange(e)
-    setCurrentValue(e.target.value)
-  }
 
   const blurHandler = (e)=>{
     field.onBlur(e)
@@ -71,23 +65,16 @@ export default function MUICustomInput({label, icon, ...props}) {
     }
   }
 
-
-  const errorCSS={
-    "color": "#FF0000",
-    "font":" normal normal 500 10px/17px Open Sans"
-  }
-
   return (
     <div>
       <Box sx={{backgroundColor:'#F7FAFF', mt:0.3, overflow: "hidden", borderRadius: "6px",  border: "1px solid #DDDDDD",}}>
         <div className='w-100'>
           <FormControl sx={{ width:"100%"}} variant="standard">
 
-            <InputLabel sx={inputLabelCSS} shrink={currentValue? true :focused } htmlFor="standard-adornment-password">{label}</InputLabel>
+            <InputLabel sx={inputLabelCSS} shrink={field.value ? true :focused } htmlFor="standard-adornment-password">{label}</InputLabel>
 
             <Input
               sx={inputCSS}
-              id="standard-adornment-password"
               name={name}
               type={(type!=="password" || showPassword) ? 'text' : 'password'}
               autoComplete="off"
@@ -113,16 +100,17 @@ export default function MUICustomInput({label, icon, ...props}) {
                 </InputAdornment>
                 :
                 null
-              }              
+              }     
+              value={field.value}         
               onFocus={() => setFocused(true)}
               onBlur={blurHandler}
-              onChange={changeHandler}
+              onChange={field.onChange}
             />
           </FormControl>
         </div>
       </Box>
-      <div style={errorCSS}>
-      {(meta.touched && meta.error) ? <ErrorMessage name={field.name} /> : <>&nbsp;</>}
+      <div className='error'>
+        {(meta.touched && meta.error) ? <ErrorMessage name={field.name} /> : <>&nbsp;</>}
       </div>
     </div>
   );
