@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import { getCurrentCountry } from '../../store/actions';
+import { setCurrentCountry } from '../../store/actions';
 
 function PhoneCustomInput(props) {
-  const [country, setCountry] = useState('us')
   const [number, setNumber] = useState("")
     //using formik
     const [field, meta] = useField(props);
@@ -20,8 +19,7 @@ function PhoneCustomInput(props) {
 
   useEffect(()=>{
     setNumber(field.value)
-    dispatch(getCurrentCountry())
-  },[currentCountry, number])
+  },[number])
 
   return (
     <div className='phone-box'>
@@ -46,11 +44,20 @@ function PhoneCustomInput(props) {
             {...props}
             value={number}
             onChange={(value, country, e, formattedValue)=>{
+              // console.log(country)
+                if(country !==currentCountry){
+                  dispatch(setCurrentCountry(country.countryCode))
+                }
                 if(e.target.type === "tel"){
                   e.target.value= e.target.value.replace(/ /g, "").replace(/-/g, "");
                   field.onChange(e);
                   setNumber(e.target.value)
                 }
+              }
+            }
+
+            onBlur={(e, formattedValue)=>{
+                field.onBlur(e);
               }
             }
             />

@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom'
 
 function FormNavigation(props) {
   return (
-    <div>
-        {console.log("")}
+    <>
         {
             !props.hasPrevious ?
-            <>
+            <div>
                 <div className="text-end">
                     <button className='next text-light p-2 px-4 mt-3' type='submit' disabled={props.disabled}>
                         <span className='me-2'>Next Step</span>
@@ -21,10 +20,10 @@ function FormNavigation(props) {
                 <div className=" mt-4 d-flex justify-content-between align-items-center">
                     <span className="fw-bold">Do have an account?</span>
                     <Link to="/">
-                    <button className="text-uppercase px-5 py-2" id="login-btn" type="button">Login</button>
+                    <button type="button" className="text-uppercase px-5 py-2" id="login-btn">Login</button>
                     </Link>
                 </div>
-            </>
+            </div>
             :
             <div className="d-flex justify-content-between my-4">
                 <button onClick={props.onBackClick} type="button" className="back"> 
@@ -40,11 +39,12 @@ function FormNavigation(props) {
                         <img src={rightArrow} width="15px" alt="" />
                     </button>
                     :
-                    <button type="submit" className='p-2' >Create Account</button>
+                    <button type="submit" className='p-2'  disabled={props.disabled}>Create Account</button>
                 }
             </div>
         }
-    </div>
+        
+    </>
   )
 }
 

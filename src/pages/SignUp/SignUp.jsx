@@ -8,25 +8,15 @@ import { signupStep1Schema, signupStep2Schema } from '../../schema/AllSchemas'
 import PhoneCustomInput from '../../components/Form/PhoneCustomInput'
 import MultiStepForm, { FormStep } from '../../components/Form/MultiStepForm'
 import Checkbox from '../../components/Form/Checkbox'
+import { useSelector } from 'react-redux'
 
 function SignUp() {
-
-  //for checkbox
+  const currentCountry  = useSelector((state)=> state.reducers.currentCountry)
   
   return (
     <div className='my-5'>
       <FormCard name="Registration" info={true}>
         <div id="signup-form" className="mt-2">
-          <div className="reg-steps row ">
-            <div className="col-6 mb-3  gs-1">
-              <div className="txt">Step 01</div>
-              <div className="underline"></div>
-            </div>
-            <div className="col-6 mb-3 ">
-              <div className="txt">Step 02</div>
-              <div className="underline"></div>
-            </div>
-          </div>
 
           <MultiStepForm
             initialValues={{
@@ -49,7 +39,7 @@ function SignUp() {
           }}>
 
             <FormStep 
-              validationSchema={signupStep1Schema("IN")}
+              validationSchema={signupStep1Schema(currentCountry)}
               stepName={"Step 1"} 
               onSubmit={()=>console.log("Step 1")}>
                 

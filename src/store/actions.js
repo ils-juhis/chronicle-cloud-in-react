@@ -14,7 +14,17 @@ export const getCurrentCountry = () => async (dispatch) => {
         dispatch({ type: actionTypes.GET_CURRENT_COUNTRY, payload: data.country.toLowerCase() });
     
     } catch (error) {
-        console.log(error)
       console.log("ERROR")
     }
   };
+
+  export const setCurrentCountry = (country) => async (dispatch) => {
+    try {
+
+        dispatch({ type: actionTypes.SET_CURRENT_COUNTRY, payload: country });
+    
+    } catch (error) {
+      console.log("ERROR")
+    }
+  };
+

@@ -14,6 +14,12 @@ const reducer = (state = initialState, action) => {
           currentCountry: action.payload,
         };
 
+        case actionTypes.SET_CURRENT_COUNTRY:
+          return {
+            ...state,
+            currentCountry: action.payload,
+          };
+
         default: return state;
     }
 }

@@ -5,9 +5,17 @@ import SignUp from './pages/SignUp/SignUp'
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import Dashboard from './pages/Dashboard/Dashboard';
 import FormLayout from './components/Form/FormLayout/FormLayout';
+import { useEffect } from 'react';
+import { getCurrentCountry } from './store/actions';
+import { useDispatch } from 'react-redux';
 
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(getCurrentCountry());
+  },[])
   return (
     <BrowserRouter >
       <Routes>

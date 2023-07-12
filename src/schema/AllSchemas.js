@@ -26,7 +26,7 @@ export const signupStep1Schema = (country)=>{
     
         email: Yup.string().email("*Please enter valid email address").required("*Please enter email address"),
         phone: Yup.string()
-            // .phone(countryCode, "*Please enter a valid mobile number")
+            .phone(countryCode, "*Please enter a valid mobile number")
             .required("*Mobile nmuber is required"),
     
         password: Yup.string()

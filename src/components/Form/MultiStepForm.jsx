@@ -14,22 +14,22 @@ function MultiStepForm({children, initialValues, onSubmit}) {
     const totalSteps = steps.length;
     const isLastStep = stepNumber === totalSteps -1;
 
-    const next = (values)=>{
+    const next = (values, actions)=>{
         setSnapshot(values)
         setStepNumber(Math.min(stepNumber + 1, totalSteps - 1));
-        console.log(snapshot)
     }
 
     const back = (values, actions)=>{
         setSnapshot(values)
         setStepNumber(Math.max(stepNumber - 1, 0));
-        console.log(snapshot)
 
     }
 
     const handleSubmit = async (values, actions)=>{
+        console.log(values, actions)
         if(step.props.onSubmit){
             await step.props.onSubmit(values, actions)
+            actions.setSubmitting(false)
         }
 
         if(isLastStep){
@@ -40,8 +40,22 @@ function MultiStepForm({children, initialValues, onSubmit}) {
         }
     }
 
+    const list = []
+
+    for (let i=0; i<totalSteps; i++) {
+      list.push(
+        <div style={stepNumber===i? {opacity: 1}: {opacity: 0.7}} className="col-6 mb-3" key={i}>
+            <div className="txt">{`Step 0${i+1}`}</div>
+            <div className="underline"></div>
+        </div>
+      )
+    }
+
   return (
     <div>
+        <div className="reg-steps row ">
+            {list}
+        </div>
         <Formik
               initialValues={snapshot}
               validationSchema={step.props.validationSchema}
@@ -56,7 +70,7 @@ function MultiStepForm({children, initialValues, onSubmit}) {
                             isLastStep={isLastStep} 
                             err={formik.errors}
                             hasPrevious={stepNumber>0} 
-                            onBackClick={()=>{back(formik.values, formik.ac)}}
+                            onBackClick={()=>{back(formik.values)}}
                             disabled={!(formik.dirty && formik.isValid)}
                         />
                     </Form>
