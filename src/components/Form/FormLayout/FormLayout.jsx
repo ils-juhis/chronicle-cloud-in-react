@@ -9,7 +9,7 @@ const FormLayout = () => {
  
     <div className="lrf-main">
       <div className="container-fluid h-100">
-        <div className="row h-100 align-items-center">
+        <div className="row m-0 mt-5 mt-lg-0 h-100 align-items-lg-center">
           <div className="logo col-lg-6 text-center  mt-lg-0 mt-auto ">
               <img className='my-5 my-lg-0' src={logo} alt=""/>
           </div>

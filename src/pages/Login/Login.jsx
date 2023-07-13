@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FormCard from '../../components/Form/FormCard/FormCard'
 import MUICustomInput from '../../components/Form/MUICustomInput'
 import emailLogo from '../../assets/images/email.svg'
@@ -6,9 +6,21 @@ import padlock from '../../assets/images/padlock.svg'
 import './Login.scss'
 import { Form, Formik } from 'formik'
 import { loginSchema } from '../../schema/AllSchemas'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../store/actions'
 
 function Login() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const userInfo = useSelector(state=> state.reducers.userInfo);
+
+  useEffect(()=>{
+    if (userInfo) {
+      navigate("/dashboard");
+    }
+  },[userInfo])
+
   return (
     <>
       <FormCard name="Login" info={true}>
@@ -21,7 +33,7 @@ function Login() {
               initialValues={{ email: '', password: '' }}
               validationSchema={loginSchema}
               onSubmit={(values)=>{
-                console.log(values)
+                dispatch(login(values.email, values.password))
               }}
             >
               <Form>

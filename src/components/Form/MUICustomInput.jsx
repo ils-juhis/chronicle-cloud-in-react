@@ -64,6 +64,11 @@ export default function MUICustomInput({label, icon, ...props}) {
       borderBottomColor: "#F7FAFF"
     }
   }
+  
+  const errorCSS={
+    "color": "#FF0000",
+    "font":" normal normal 500 10px/17px Open Sans"
+  }
 
   return (
     <div>
@@ -109,7 +114,7 @@ export default function MUICustomInput({label, icon, ...props}) {
           </FormControl>
         </div>
       </Box>
-      <div className='error'>
+      <div style={errorCSS}>
         {(meta.touched && meta.error) ? <ErrorMessage name={field.name} /> : <>&nbsp;</>}
       </div>
     </div>

@@ -2,7 +2,8 @@ import * as actionTypes from './constant';
 
 
 const initialState = {
-    currentCountry: 'us'
+    currentCountry: 'us',
+    userInfo: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const reducer = (state = initialState, action) => {
           return {
             ...state,
             currentCountry: action.payload,
+          };
+
+        case actionTypes.SET_CURRENT_USER:
+          return {
+            ...state,
+            userInfo: action.payload,
           };
 
         default: return state;

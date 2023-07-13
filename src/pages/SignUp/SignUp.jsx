@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FormCard from '../../components/Form/FormCard/FormCard'
 import './SignUp.scss'
 import MUICustomInput from '../../components/Form/MUICustomInput'
@@ -8,10 +8,24 @@ import { signupStep1Schema, signupStep2Schema } from '../../schema/AllSchemas'
 import PhoneCustomInput from '../../components/Form/PhoneCustomInput'
 import MultiStepForm, { FormStep } from '../../components/Form/MultiStepForm'
 import Checkbox from '../../components/Form/Checkbox'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { signUp } from '../../store/actions'
 
 function SignUp() {
+  //state
   const currentCountry  = useSelector((state)=> state.reducers.currentCountry)
+  const userInfo = useSelector(state=> state.reducers.userInfo);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if (userInfo) {
+      navigate("/dashboard");
+    }
+  },[userInfo])
+
   
   return (
     <div className='my-5'>
@@ -36,6 +50,7 @@ function SignUp() {
 
           onSubmit={(values)=>{
             console.log(values)
+            dispatch(signUp(values));
           }}>
 
             <FormStep 

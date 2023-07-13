@@ -28,3 +28,19 @@ export const getCurrentCountry = () => async (dispatch) => {
     }
   };
 
+
+export const login = (email, password) => async (dispatch)=>{
+  try{
+    dispatch({type: actionTypes.SET_CURRENT_USER, payload: {email, name: "Juhi Sahu"}});
+  }catch(error){
+    console.log("ERROR")
+  }
+}
+
+export const signUp = (userData) => async (dispatch)=>{
+  try{
+    dispatch({type: actionTypes.SET_CURRENT_USER, payload: {email: userData.email, name: userData.firstName+ " "+ userData.lastName}})
+  }catch(error){
+    console.log("ERROR")
+  }
+}

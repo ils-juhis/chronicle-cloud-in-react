@@ -24,10 +24,20 @@ function PhoneCustomInput(props) {
   return (
     <div className='phone-box'>
         <PhoneInput
-            placeholder=""
             country={currentCountry}
+            value={number}
+            placeholder=""
+            inputProps={{
+              name: 'phone',
+              required: true,
+              autoComplete: "off",
+            }}
+
+            enableTerritories={true}
+            countryCodeEditable={false}
             enableSearch= {true}
             disableSearchIcon={true}
+            
             inputClass={(meta.touched && meta.error) ? "err" : null}
             buttonStyle={{
                 width:"46px",
@@ -35,14 +45,10 @@ function PhoneCustomInput(props) {
                 borderTopLeftRadius: "6px",
                 borderBottomLeftRadius: "6px"
             }}
-            inputProps={{
-                name: 'phone',
-                required: true,
-                autoComplete: "off",
-            }}
+            
 
             {...props}
-            value={number}
+            
             onChange={(value, country, e, formattedValue)=>{
               // console.log(country)
                 if(country !==currentCountry){
@@ -70,3 +76,4 @@ function PhoneCustomInput(props) {
 }
 
 export default PhoneCustomInput
+
