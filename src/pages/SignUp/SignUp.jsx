@@ -24,7 +24,7 @@ function SignUp() {
     if (userInfo) {
       navigate("/dashboard");
     }
-  },[userInfo])
+  },[navigate, userInfo])
 
   
   return (
@@ -82,7 +82,7 @@ function SignUp() {
 
               <PhoneCustomInput name="phone" type="text"/>
               
-              <div className="fw-bold h-4 mt-4 fs-6 mb-1">Create Password</div>
+              <div className="fw-bold h-4 mt-2 fs-6 mb-1">Create Password</div>
               <div className="content mb-3"> Password must contain one special character, one capital letter and be at least 6 characters long. </div>
 
               <MUICustomInput 

@@ -10,7 +10,7 @@ function FormNavigation(props) {
             !props.hasPrevious ?
             <div>
                 <div className="text-end">
-                    <button className='next text-light p-2 px-4 mt-3' type='submit' disabled={props.disabled}>
+                    <button className='next text-light p-2 px-4 mt-3' type='submit'>
                         <span className='me-2'>Next Step</span>
                         <img src={rightArrow} width="15px" alt="" />
                     </button>
@@ -39,7 +39,7 @@ function FormNavigation(props) {
                         <img src={rightArrow} width="15px" alt="" />
                     </button>
                     :
-                    <button type="submit" className='p-2'  disabled={props.disabled}>Create Account</button>
+                    <button type="submit" className='p-2' >Create Account</button>
                 }
             </div>
         }

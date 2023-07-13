@@ -19,7 +19,7 @@ function Login() {
     if (userInfo) {
       navigate("/dashboard");
     }
-  },[userInfo])
+  },[navigate, userInfo])
 
   return (
     <>

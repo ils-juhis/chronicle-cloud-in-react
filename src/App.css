@@ -5,6 +5,11 @@
     font-family: Open Sans;
 }
 
+body, #root{
+    position: relative;
+    z-index: -999999;
+}
+
 button:disabled{
     opacity: 0.7;
 }

@@ -1,0 +1,31 @@
+.header{
+    .add-school{
+        font-size: 11px;
+        color: #487FCC;
+        background-color: white;
+        padding: 8px 13px;
+        font-weight: 700 !important;
+        border-radius: 8px;
+        box-shadow: 0px 3px 6px #00000026;
+        cursor: pointer;
+        height: fit-content;
+    }
+
+    .bell-icon>img{
+        cursor: pointer;
+        width: 18px;
+    }
+    
+    .bell-icon span{
+        position: absolute;
+        right: -4px;
+        top: -2px;
+        text-align: center;
+        background-color: #F0142F;
+        font-size: 10px;
+        color: white;
+        width: 13px;
+        font-size: 9px;
+    }
+    
+}
