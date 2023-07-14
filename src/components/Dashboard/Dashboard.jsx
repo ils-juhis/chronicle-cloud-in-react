@@ -25,6 +25,7 @@ function Dashboard() {
 
   useEffect(()=>{
       if(window.innerWidth <=992){
+        setState(false)
         document.addEventListener("click", outsideClickHandler);
         return () => {
             document.removeEventListener("click", outsideClickHandler);
@@ -43,7 +44,7 @@ function Dashboard() {
           </div>
           <div className="">
             <Header toggleBtn={toggleBtn} setHambugerClick={setHambugerClick}/>
-            <div className='p-3'>
+            <div className='p-3 p-lg-4'>
               <Outlet/>
             </div>
           </div>

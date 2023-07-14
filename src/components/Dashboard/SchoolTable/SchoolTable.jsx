@@ -1,5 +1,7 @@
 import React from 'react'
 import './SchoolTable.scss'
+import { tableData } from '../../../data/tableData'
+import {IoMdEye} from 'react-icons/io';
 
 function SchoolTable() {
   return (
@@ -20,7 +22,25 @@ function SchoolTable() {
                         </tr>
                     </thead>
                     <tbody >
-
+                        {
+                            tableData.map((row)=>{
+                                return (
+                                    <tr>
+                                        <th scope="row"> <img src={row.imgPath} alt=""/></th>
+                                        <td>{row.schoolName}</td>
+                                        <td>{row.email}<br/> {row.phone}</td>
+                                        <td>{row.schoolSize}</td>
+                                        <td><span style={{fontSize: "15px", fontWeight: 900}}>{row.dataUsage}</span>/<span className="text-mute">{row.totalData} mb</span></td>
+                                        <td>{row.status}</td>
+                                        <td>
+                                            <a href={row.viewLink} className="text-decoration-none d-flex align-items-center">
+                                                <IoMdEye/> &nbsp; View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>

@@ -1,0 +1,47 @@
+.school-table{
+    background-color: white;
+    box-shadow: 0px 1px 6px #0000001A;
+    border-radius: 10px 10px 0 0 ;
+    padding: 20px;
+
+    .heading{
+        color: #444B48;
+    }
+    
+    .table-responsive{
+        white-space: nowrap;
+        width: calc(100vw - 370px);
+
+        @media screen and (max-width: 992px){
+            width: calc(100vw - 70px);
+        }
+    }
+
+    th{
+        text-align: left;
+        font: normal normal 600 13px/22px Open Sans;
+        color: #7E84A3 !important;
+        text-transform: uppercase;
+    }
+    
+    td{
+        font: normal normal 600 13px/22px Open Sans;
+        font-weight: normal;
+    }
+    
+    
+    tr>th img{
+        width: 50px;
+        border: 1px solid #EEEEEE;
+    }
+    
+    tbody tr{
+        vertical-align: middle;
+    }
+    
+    
+    .text-mute{
+        color: #7E84A3 !important;
+        font-size: 12px;
+    }
+}

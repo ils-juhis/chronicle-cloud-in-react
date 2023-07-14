@@ -15,3 +15,8 @@ body, #root{
 button:disabled{
     opacity: 0.7;
 }
+
+/****************scroll bar ******************************/
+*::-webkit-scrollbar { 
+    display: none;
+ }
