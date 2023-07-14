@@ -1,0 +1,43 @@
+
+.count-item{
+    
+    >div{
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 1px 6px #0000001A;
+        border-radius: 10px;
+        justify-content: space-between;
+        transition: all ease 1s;
+        padding: 15px;
+    }
+
+    >div>div div:nth-child(1){
+        font: normal normal 600 13px/22px Open Sans;
+        font-weight: 600;
+        opacity: 0.4;
+        text-transform: uppercase;
+    }
+    >div>div div:nth-child(2){
+        font: normal normal 600 30px/55px Open Sans;
+    }
+    >div>div div:nth-child(2) span{
+        font: normal normal normal 12px/19px Open Sans;
+    }
+    >div>div div:nth-child(3){
+        font: normal normal normal 12px/19px Open Sans;
+        opacity: 0.4;
+    }
+    
+
+    .icon{
+        font: normal normal normal 20px Open Sans;
+        color: white;
+        width: 50px;
+        padding: 10px;
+        text-align: center;
+        margin: auto 10px;
+        margin-left: 30px;
+        height: fit-content;
+        border-radius: 50%;
+    }
+    
+}

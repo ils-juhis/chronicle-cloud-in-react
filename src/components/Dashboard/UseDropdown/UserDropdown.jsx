@@ -34,21 +34,21 @@ function UserDropdown() {
 
   return (
     <>
-        <div id="user-dropdown" className="my-auto" aria-expanded="false">
-            <div className="d-flex text-white align-items-center justify-content-between" ref={dropRef}>
-              <div className="d-flex align-items-center" >
-                <Avatar alt="Remy Sharp" src={profile} sx={{ width: 27, height: 27 }} />
-                  <span id="user-name" className="d-none d-sm-block"> {userInfo ? userInfo.name : "Vincent Williams"} &nbsp; </span>
-              </div>
-              <span className="ms-2 my-auto"><FiChevronDown/></span>
-            </div>
-            <div id="user-options" style={{display: state ? "block": "none"}}>
-              <a href="#"><LuUsers/> &nbsp; View Profile</a>
-              <a href="#"><AiOutlineGlobal/> &nbsp; Visit Website</a>
-              <a href="#"><BiHelpCircle/> &nbsp; Help Center</a>
-              <a href="#"><PiSignOutBold/> &nbsp; Sign Out</a>
-            </div>
+      <div id="user-dropdown" className="my-auto" aria-expanded="false">
+        <div className="d-flex text-white align-items-center justify-content-between" ref={dropRef}>
+          <div className="d-flex align-items-center" >
+            <Avatar alt="Remy Sharp" src={profile} sx={{ width: 27, height: 27 }} />
+              <span id="user-name" className="d-none d-sm-block"> {userInfo ? userInfo.name : "Vincent Williams"} &nbsp; </span>
           </div>
+          <span className="ms-2 my-auto"><FiChevronDown/></span>
+        </div>
+        <div id="user-options" style={{display: state ? "inline": "none"}}>
+          <a href="#"><LuUsers/> &nbsp; View Profile</a>
+          <a href="#"><AiOutlineGlobal/> &nbsp; Visit Website</a>
+          <a href="#"><BiHelpCircle/> &nbsp; Help Center</a>
+          <a href="#"><PiSignOutBold/> &nbsp; Sign Out</a>
+        </div>
+      </div>
     </>
   )
 }

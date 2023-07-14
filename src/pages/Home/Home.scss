@@ -1,0 +1,22 @@
+#home{
+
+    >div{
+        width: 90%;
+    }
+
+    #count-box {
+        div:nth-child(1) .icon{
+            background: transparent linear-gradient(158deg, #6D6AE3 0%, #6664D8 100%) 0% 0% no-repeat padding-box;
+        }
+        div:nth-child(2) .icon{
+            background: transparent linear-gradient(158deg, #FB9A40 0%, #F88820 100%) 0% 0% no-repeat padding-box;
+        }
+        div:nth-child(3) .icon{
+            background: transparent linear-gradient(158deg, #FFC05D 0%, #F8A829 100%) 0% 0% no-repeat padding-box;
+        }
+        div:nth-child(4) .icon{
+            background: transparent linear-gradient(158deg, #44D58C 0%, #2CBE59 100%) 0% 0% no-repeat padding-box;
+        }
+    }
+
+}

@@ -17,7 +17,7 @@ function Dashboard() {
           </div>
           <div className="">
             <Header/>
-            <div>
+            <div className='p-3'>
               <Outlet/>
             </div>
           </div>

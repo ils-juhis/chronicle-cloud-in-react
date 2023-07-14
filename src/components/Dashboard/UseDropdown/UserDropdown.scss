@@ -36,14 +36,13 @@
             }
         }
 
-        @media screen and (max-width: 576px){} 
+        @media screen and (max-width: 576px){
             position: absolute;
             top: 25px;
             left: -90px;
             width: 150px;     
         }  
-
-    
+    }  
 
     @media screen and (max-width: 576px) {
         width: fit-content;

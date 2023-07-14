@@ -7,7 +7,7 @@ import UserDropdown from '../UseDropdown/UserDropdown'
 function Header() {
   return (
     <div className="header py-3 pe-lg-4 d-flex justify-content-between">
-      <span id="toggle-btn" className="d-lg-none me-4" aria-expanded="false"><FaBars/></span>
+      <span id="toggle-btn" className="d-lg-none text-light me-4" aria-expanded="false"><FaBars/></span>
       <div className="d-flex justify-content-end justify-content-md-between w-100" >
         <div className="text-light fw-bold d-none d-md-inline-block">
           Dashboard

@@ -1,8 +1,30 @@
 import React from 'react'
+import './Home.scss'
+import {countData} from '../../data/countData'
+import CountCard from '../../components/Dashboard/CountCard/CountCard'
+import SchoolTable from '../../components/Dashboard/SchoolTable/SchoolTable'
 
 function Home() {
+  
   return (
-    <div>Home</div>
+    <div id='home'>
+      <div>
+        <section className="smallbox-container">
+          <div className="row g-4 mb-4" id="count-box">
+            {
+              countData.map((item)=>{
+                return (
+                  <CountCard item={item}/>
+                )
+              })
+            }
+          </div>
+        </section>
+      </div>
+        <section>
+          <SchoolTable/>
+        </section>
+    </div>
   )
 }
 
