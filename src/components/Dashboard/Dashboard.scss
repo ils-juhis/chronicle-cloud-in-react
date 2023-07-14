@@ -4,25 +4,30 @@
     height: 100vh;
     background-color: #F3F4F9 !important;
     overflow-x: hidden;
-    z-index: -9999;
 
     .blue-block{
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         background-color: #487FCC;
         box-shadow: 0px 1px 4px #15223214;
         width: 100%;
         height: 170px;
-        z-index: -9999;
+        z-index: 1;
     }
 
     .main{
-        height: 100%;
+        position: relative;
+        z-index: 2;
         width: 100%;
+        height: 100%;
         display: grid;
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 280px calc(100% - 280px);
         grid-template-areas:
             "navbar content";
+
+        @media screen and (max-width: 992px) {
+            grid-template-columns: 0px 1fr;    
         }
+    }
 }

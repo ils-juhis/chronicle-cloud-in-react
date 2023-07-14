@@ -20,9 +20,12 @@ function Home() {
             }
           </div>
         </section>
+        <section class="graph-container">
+              
+        </section>
       </div>
         <section>
-          <SchoolTable/>
+          {/* <SchoolTable/> */}
         </section>
     </div>
   )

@@ -1,5 +1,4 @@
-{
-    "allSchool": [
+export const schoolData= [
         {
             "schoolName":"School_Name_01",
             "multimedia": 85,
@@ -62,4 +61,3 @@
         }
 
     ]
-}

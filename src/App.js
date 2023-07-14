@@ -22,11 +22,16 @@ function App() {
       <Routes>
         <Route path="/" element={<FormLayout />}>
           <Route index element={<Login /> } />
-          <Route path="/sign-up" element={<SignUp/> } />
-          <Route path="/forgot-pwd" element={<ForgotPassword/> } />
+          <Route path="sign-up" element={<SignUp/> } />
+          <Route path="forgot-pwd" element={<ForgotPassword/> } />
         </Route>
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route index element={<Home /> } />
+          <Route path="manage-teacher" element={<></> } />
+          <Route path="manage-schools" element={<></> } />
+          <Route path="manage-classes" element={<></> } />
+          <Route path="manage-rosters" element={<></> } />
+
         </Route>
 
       </Routes>

@@ -10,7 +10,7 @@ function CountCard({item}) {
                 <div> {item.activeCases} <span>{item.status}</span></div>
                 <div>{item.totalText}: {item.total}</div>
             </div>
-            <div className="icon">
+            <div className="icon d-flex align-items-center justify-content-center">
                 <img src={item.path}/>
             </div>
         </div>

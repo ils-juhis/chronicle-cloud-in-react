@@ -4,10 +4,15 @@ import {FaBars, FaPlus} from 'react-icons/fa'
 import './Header.scss'
 import UserDropdown from '../UseDropdown/UserDropdown'
 
-function Header() {
+function Header({toggleBtn, setHambugerClick}) {
   return (
-    <div className="header py-3 pe-lg-4 d-flex justify-content-between">
-      <span id="toggle-btn" className="d-lg-none text-light me-4" aria-expanded="false"><FaBars/></span>
+    <div className="header p-3 py-4 d-flex justify-content-between">
+      <span id="toggle-btn" 
+        className="d-lg-none text-light me-4" aria-expanded="false" 
+        onClick={()=> {setHambugerClick(true); toggleBtn()}}
+        >
+        <FaBars/>
+      </span>
       <div className="d-flex justify-content-end justify-content-md-between w-100" >
         <div className="text-light fw-bold d-none d-md-inline-block">
           Dashboard
