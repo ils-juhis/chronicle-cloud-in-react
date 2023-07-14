@@ -1,17 +1,18 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { schoolData } from '../../../data/graphData';
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 //pie chart
-let pieXValues = ["Multimedia", "Audio Notes", "Notes","Free Space"];
-let {multimedia, audioNotes, notes, free} = schoolData[0];
+
+
+export default function PieChart({selectedSchool}) {
+  let pieXValues = ["Multimedia", "Audio Notes", "Notes","Free Space"];
+let {multimedia, audioNotes, notes, free} = selectedSchool;
 let pieYValues = [multimedia, audioNotes, notes, free];
 let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
 
-export const data = {
+ const data = {
   labels: pieXValues,
   datasets: [
     {
@@ -22,7 +23,7 @@ export const data = {
   ],
 };
 
-export const options= {
+ const options= {
     rotation: 45,
     plugins: {
       
@@ -89,6 +90,5 @@ export const options= {
     aspectRatio: 2
   }
 
-export function PieChart() {
   return <Pie options={options} data={data} />;
 }

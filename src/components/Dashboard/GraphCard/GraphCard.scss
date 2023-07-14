@@ -43,6 +43,28 @@
     }
 }
 
+.pie-chart{
+    .form-control, .form-control:focus {
+        border: 1px solid #CCCCCC !important;
+    }
+    
+    .form-select-sm{
+        font: normal normal normal 12px Open Sans !important;
+        height: fit-content !important;
+    }
+    .form-select {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAABqUlEQVR4nO2XvUoDQRRGxx8QxUexlnQLuZPMzdwt3dLWQh8iXRoLFStRK1ttRBBURCxs9CF8EDUSSBQSY7Kzv7P7HZhqYe6cM1vsKgUAAAAAAAAAAAAAJmkKb5E11yT8RsJX1GmHqkQEQbBMwjta+I7EvJKYC83cSGPvBRI+1cL98UWWjwfPVcEEUbBO1jxMns98kuXdRJtra7b/kv9d5qTICAN5bfl52vnImo+WtDacB5A1T/8HKC7CLPmfCGL2nYdoMe+zA+QfYV754bp0HqQtv8w5JLcIMeUH68h5WKtj9mIMyjyCg/xXU9qbzgOjKFrSwrdliOAg39eWe4kHN6JoVQvfx4xw1u12F1MxV0qFYbimhR/jnIGsOUjtIhoFRihcvsgIpZFPFMGac5cIpZPPM0Jp5Ucw84oWvskiQunls4zgjXwWEbyTTzOCt/JpRPBePul3QtzPW7J8WDr5RG+C7zefVwQv5LOK4JV82hG8lE8rgtfySSNUQt41QqXk40aopPy8ESotPytCLeSnRaiV/HiEWsqPGP4S11MeAAAAAAAAAABQhfEN9WJgCWLWmB0AAAAASUVORK5CYII=") !important;
+        color: #444B48 !important;
+        background-size: 9px auto !important;
+        box-shadow: none !important;
+        cursor: pointer;
+    }
+    
+    .form-select:focus{
+        border-color: #CCCCCC !important;
+    }
+}
+
 .bargraph{
         
     #bar-legend-box button{

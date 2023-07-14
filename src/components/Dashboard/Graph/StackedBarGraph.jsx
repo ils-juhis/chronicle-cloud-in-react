@@ -9,7 +9,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { schoolData } from '../../../data/graphData';
 
 ChartJS.register(
   CategoryScale,
@@ -20,7 +19,9 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+
+export default function StackedBarGraph({schoolData, category}) {
+ const options = {
     plugins: {
       datalabels:{
         display: false
@@ -91,25 +92,21 @@ export const options = {
 
 let xValues = schoolData.map((value)=>{return value.schoolName})
 
-
-export const data = {
+ const data = {
   labels: xValues,
 
     datasets: [{
       label: "Active",
       backgroundColor: "#F9AC32",
-      data: schoolData.map((value)=>{return value.roster.active}),
+      data: schoolData.map((value)=>{return value[category].active}),
       barThickness:20,
       hoverBackgroundColor: "#5BCDA2"
     },{
         label:"Inactive",
         backgroundColor: "#EEEEEE",
-        data: schoolData.map((value)=>{return value.roster.inactive}),
+        data: schoolData.map((value)=>{return value[category].inactive}),
         barThickness:20
     }]
 };
-
-export function StackedBarGraph() {
-
   return <Bar options={options} data={data} />;
 }

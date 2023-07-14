@@ -1,20 +1,26 @@
-import React from 'react'
-import {PieChart} from '../Graph/PieChart'
+import React, { useState } from 'react'
+import PieChart from '../Graph/PieChart'
 import './GraphCard.scss'
+import { schoolData } from '../../../data/graphData';
 
 function PieChartCard() {
+  const [selectedSchool, setSelectedSchool] = useState(0);
   return (
     <div>
-      <div className="graphs">
+      <div className="graphs pie-xhart">
         <div className="heading d-flex justify-content-between"> 
             <div>Data Usage</div>
-            <select className="form-select form-select-sm" id="select-school" aria-label=".form-select-sm example" style={{width: "fit-content", fontSize: "12px"}}>
-                
+            <select onChange={(e)=>{setSelectedSchool(e.target.value)}} className="form-select form-select-sm" id="select-school" aria-label=".form-select-sm example" style={{width: "fit-content", fontSize: "12px"}}>
+              {
+                schoolData.map((item, index)=>{
+                  return (<option value={index}>{schoolData[index].schoolName}</option>)
+                })
+              }
             </select>
         </div>
         <div className="position-relative">
             <div>
-                <PieChart/>
+                <PieChart selectedSchool={schoolData[selectedSchool]}/>
             </div>
         </div>
       </div>
