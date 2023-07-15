@@ -1,7 +1,8 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-ChartJS.register(ArcElement, Tooltip, Legend);
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 //pie chart
 
@@ -25,6 +26,7 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
 
  const options= {
     rotation: 45,
+    
     plugins: {
       
       labels:{
@@ -71,6 +73,9 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
       },
       tooltip: {
         usePointStyle: true,
+        cornerRadius: 0,
+        boxPadding: 9,
+        boxHeight: 6,
         callbacks: {
             labelPointStyle: function(context) {
                 return {
@@ -90,5 +95,5 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
     aspectRatio: 2
   }
 
-  return <Pie options={options} data={data} />;
+  return <Pie options={options} plugins={[ChartDataLabels]} data={data} />;
 }

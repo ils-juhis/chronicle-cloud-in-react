@@ -5,7 +5,7 @@ import { schoolData } from '../../../data/graphData';
 
 function BarGraphCard() {
 
-    const [active, setActive] = useState("teachers")
+    const [active, setActive] = useState("roster")
 
   return (
     <div>
@@ -19,9 +19,8 @@ function BarGraphCard() {
                         <a  href="#" className={active==="teachers" ? "active": null}>Teachers</a>
                     </span>
                 </div>
-                <div id="bar-legend-box" >
-                    <button id="active"><span style={{backgroundColor: "#F9AC32"}}></span> <span>Active</span></button>
-                    <button id="inactive"><span style={{backgroundColor: "#EEEEEE"}}></span> <span>Inactive</span></button>
+                <div id="bar-legend-container" >
+                   
                 </div>
             </div>
             <div className="position-relative">

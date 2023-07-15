@@ -3,7 +3,7 @@ import './CountCard.scss'
 
 function CountCard({item}) {
   return (
-    <div className="count-item col-sm-6 col-xxl-3" key={item.heading}>
+    <div className="count-item col-sm-6 col-xxl-3">
         <div className="d-flex">
             <div>
                 <div> {item.heading}</div>

@@ -3,8 +3,6 @@ import './Home.scss'
 import {countData} from '../../data/countData'
 import CountCard from '../../components/Dashboard/CountCard/CountCard'
 import SchoolTable from '../../components/Dashboard/SchoolTable/SchoolTable'
-import { StackedBarGraph } from '../../components/Dashboard/Graph/StackedBarGraph'
-import { PieChart } from '../../components/Dashboard/Graph/PieChart'
 import BarGraphCard from '../../components/Dashboard/GraphCard/BarGraphCard'
 import PieChartCard from '../../components/Dashboard/GraphCard/PieChartCard'
 
@@ -16,15 +14,15 @@ function Home() {
         <section className="smallbox-container">
           <div className="row g-4 mb-4" id="count-box">
             {
-              countData.map((item)=>{
+              countData.map((item, i)=>{
                 return (
-                  <CountCard item={item}/>
+                  <CountCard item={item} key={i}/>
                 )
               })
             }
           </div>
         </section>
-        <section class="graph-container">
+        <section className="graph-container">
           <div className="row g-4 mb-4">
             <div className="col-12 col-xl-6 graph-card">
               <BarGraphCard/>

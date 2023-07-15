@@ -23,9 +23,9 @@ function SchoolTable() {
                     </thead>
                     <tbody >
                         {
-                            tableData.map((row)=>{
+                            tableData.map((row,i)=>{
                                 return (
-                                    <tr>
+                                    <tr key={i}>
                                         <th scope="row"> <img src={row.imgPath} alt=""/></th>
                                         <td>{row.schoolName}</td>
                                         <td>{row.email}<br/> {row.phone}</td>
