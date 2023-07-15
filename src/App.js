@@ -16,7 +16,7 @@ function App() {
 
   useEffect(()=>{
     dispatch(getCurrentCountry());
-  },[])
+  },[dispatch])
   return (
     <BrowserRouter >
       <Routes>

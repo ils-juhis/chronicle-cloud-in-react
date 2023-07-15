@@ -11,7 +11,7 @@ function CountCard({item}) {
                 <div>{item.totalText}: {item.total}</div>
             </div>
             <div className="icon d-flex align-items-center justify-content-center">
-                <img src={item.path}/>
+                <img src={item.path} alt=""/>
             </div>
         </div>
     </div>

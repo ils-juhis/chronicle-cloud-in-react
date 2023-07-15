@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Sidebar.scss'
 import cloud from '../../../assets/images/cloud.svg'
 import {RxCross2} from 'react-icons/rx';

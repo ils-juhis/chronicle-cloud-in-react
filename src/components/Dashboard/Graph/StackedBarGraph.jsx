@@ -52,7 +52,6 @@ function customTooltipFunc (context) {
 
   // Set Text
   if (tooltipModel.dataPoints) {
-      const titleLines = tooltipModel.title || [];
       const dataPoints = tooltipModel.dataPoints;
 
       let innerHtml= ``;
