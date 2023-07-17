@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
+import * as helpers from 'chart.js/helpers';
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 //pie chart
 
+export const LabelPluginProvider = ({ children }) => {
+  React.useEffect(() => {
+      window.Chart = ChartJS;
+      ChartJS.helpers = helpers;
+      import('chart.js-plugin-labels-dv');
+  }, []);
+  return children;
+};
+
+
+
 
 export default function PieChart({selectedSchool}) {
+
   let pieXValues = ["Multimedia", "Audio Notes", "Notes","Free Space"];
 let {multimedia, audioNotes, notes, free} = selectedSchool;
 let pieYValues = [multimedia, audioNotes, notes, free];
@@ -26,32 +38,28 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
 
  const options= {
     rotation: 45,
-    
+    labels:{
+      render: (ctx)=>{
+        return ctx.value + " mb ";
+      },
+      position:"outside",
+      fontColor: barColors
+    },
     plugins: {
-      
-      labels:{
-        render: (ctx)=>{
-          return ctx.value + " mb ";
-        },
-        position:"outside",
-        fontColor: barColors
-      },
-      datalabels:{
-        formatter: (value, ctx) => {
-          let sum = 0;
-          let dataArr = ctx.chart.data.datasets[0].data;
-          dataArr.map(data => {
-            sum += data;
-          });
-          let percentage = (value*100 / sum).toFixed(0)+"%";
-          return percentage;
-        },
-        labels: {
-          title: {
+      labels: [
+        {
+          render: (ctx)=>{
+            console.log(ctx.value)
+            return ctx.value + " mb ";
           },
+          position:"outside",
+          fontColor: barColors
         },
-        color: "#FFFFFF"
-      },
+        {
+          render: 'percentage', 
+          fontColor: "#fff"
+        }
+      ],
       legend: {
         display: true,
         font: {
@@ -95,5 +103,9 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
     aspectRatio: 2
   }
 
-  return <Pie options={options} plugins={[ChartDataLabels]} data={data} />;
+  return <LabelPluginProvider>
+    {console.log(options)}
+    <Pie options={options} data={data} />
+  </LabelPluginProvider>;
 }
+

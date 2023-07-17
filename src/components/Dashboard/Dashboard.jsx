@@ -5,7 +5,7 @@ import Header from './Header/Header'
 import { Outlet } from 'react-router-dom'
 
 function Dashboard() {
-  const [state, setState] = useState(true)
+  const [state, setState] = useState(false)
   const [hambugerClick, setHambugerClick] = useState(false)
   const navRef = useRef(null);
 
@@ -25,11 +25,12 @@ function Dashboard() {
 
   useEffect(()=>{
       if(window.innerWidth <=992){
-        setState(false)
         document.addEventListener("click", outsideClickHandler);
         return () => {
             document.removeEventListener("click", outsideClickHandler);
           };
+      }else{
+        setState(true)
       }
   },[state, hambugerClick])
   return (
