@@ -6,12 +6,12 @@ import { Outlet } from 'react-router-dom'
 
 function Dashboard() {
   const [state, setState] = useState(false)
-  const [hambugerClick, setHambugerClick] = useState(false)
   const navRef = useRef(null);
+  const hambugerRef = useRef(null);
 
   const outsideClickHandler = (e)=>{
     console.log(e.target)
-    if(navRef.current && state && !navRef.current.contains(e.target) && !hambugerClick){
+    if(navRef.current && state && !navRef.current.contains(e.target) && !hambugerRef.current.contains(e.target)){
         setState(false)
     }
   }
@@ -32,7 +32,7 @@ function Dashboard() {
       }else{
         setState(true)
       }
-  },[state, hambugerClick])
+  },[state])
   return (
     <>
       <div className="dashboard-container ">
@@ -44,7 +44,7 @@ function Dashboard() {
             <Sidebar state={state} toggleBtn={toggleBtn} navRef={navRef}/>
           </div>
           <div className="">
-            <Header toggleBtn={toggleBtn} setHambugerClick={setHambugerClick}/>
+            <Header toggleBtn={toggleBtn} hambugerRef={hambugerRef}/>
             <div className='p-3 p-lg-4'>
               <Outlet/>
             </div>

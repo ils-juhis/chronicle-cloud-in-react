@@ -4,12 +4,12 @@ import {FaBars, FaPlus} from 'react-icons/fa'
 import './Header.scss'
 import UserDropdown from '../UseDropdown/UserDropdown'
 
-function Header({toggleBtn, setHambugerClick}) {
+function Header({toggleBtn, hambugerRef}) {
   return (
     <div className="header p-3 py-4 d-flex justify-content-between">
-      <span id="toggle-btn" 
+      <span id="toggle-btn"  ref={hambugerRef}
         className="d-lg-none text-light me-4" aria-expanded="false" 
-        onClick={()=> {setHambugerClick(true); toggleBtn()}}
+        onClick={()=> {toggleBtn()}}
         >
         <FaBars/>
       </span>

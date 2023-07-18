@@ -37,6 +37,11 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
 };
 
  const options= {
+    layout: {
+      padding: {
+        bottom: 10
+      }
+    },
     rotation: 45,
     labels:{
       render: (ctx)=>{
@@ -49,7 +54,6 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
       labels: [
         {
           render: (ctx)=>{
-            console.log(ctx.value)
             return ctx.value + " mb ";
           },
           position:"outside",
@@ -85,12 +89,12 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
         boxPadding: 9,
         boxHeight: 6,
         callbacks: {
-            labelPointStyle: function(context) {
-                return {
-                    pointStyle: 'circle',
-                    rotation: 0
-                };
-            }
+          labelPointStyle: function(context) {
+            return {
+              pointStyle: 'circle',
+              rotation: 0
+            };
+          }
         }
       },
       title: {
@@ -104,7 +108,6 @@ let barColors = ["#286BCB", "#7DB0F7", "#CCCCCC", "#386CB5"];
   }
 
   return <LabelPluginProvider>
-    {console.log(options)}
     <Pie options={options} data={data} />
   </LabelPluginProvider>;
 }
