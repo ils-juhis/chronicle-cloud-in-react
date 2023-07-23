@@ -19,7 +19,7 @@ function Login() {
     if (userInfo) {
       navigate("/dashboard");
     }
-  },[navigate, userInfo])
+  },[userInfo])
 
   return (
     <>
@@ -32,8 +32,9 @@ function Login() {
             <Formik
               initialValues={{ email: '', password: '' }}
               validationSchema={loginSchema}
-              onSubmit={(values)=>{
-                dispatch(login(values.email, values.password))
+              onSubmit={(values,  { resetForm })=>{
+                dispatch(login(values.email, values.password));
+                resetForm()
               }}
             >
               <Form>

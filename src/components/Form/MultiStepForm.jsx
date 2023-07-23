@@ -26,7 +26,6 @@ function MultiStepForm({children, initialValues, onSubmit}) {
     }
 
     const handleSubmit = async (values, actions)=>{
-        console.log(values, actions)
         if(step.props.onSubmit){
             await step.props.onSubmit(values, actions)
             actions.setSubmitting(false)

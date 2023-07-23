@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FormCard from '../../components/Form/FormCard/FormCard'
 import './ForgotPassword.scss'
 import { Form, Formik } from 'formik'
 import MUICustomInput from '../../components/Form/MUICustomInput'
 import emailLogo from '../../assets/images/email.svg'
 import { forgotPwdSchema } from '../../schema/AllSchemas'
+import { useDispatch, useSelector } from 'react-redux'
+import { forgotPwd } from '../../store/actions'
+import { useNavigate } from 'react-router-dom'
 
 function ForgotPassword() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const userInfo = useSelector(state=> state.reducers.userInfo);
+
+  useEffect(()=>{
+    if (userInfo) {
+      navigate("/dashboard");
+    }
+  },[userInfo])
+
   return (
     <>
       <FormCard name="Forgot Password">
@@ -18,8 +31,9 @@ function ForgotPassword() {
             <Formik
               initialValues={{ email: ''}}
               validationSchema={forgotPwdSchema}
-              onSubmit={(values)=>{
-                console.log(values)
+              onSubmit={(values,  { resetForm })=>{
+                dispatch(forgotPwd(values.email))
+                resetForm();
               }}>
 
               {

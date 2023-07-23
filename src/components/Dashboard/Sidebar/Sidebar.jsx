@@ -22,16 +22,16 @@ function Sidebar({state, toggleBtn, navRef}) {
 
           <div id="link-container" onClick={toggleBtn}>
             {
-                linkData.map((item)=>{
-                    return(
-                        <NavLink end to={item.path} className={({ isActive }) => isActive ? "link-box active" : "link-box"} key={item.title}>
-                            <div className="aside-link"> 
-                                <span className="aside-icon">{item.icon}</span> 
-                                <span>{item.title}</span>
-                            </div>
-                        </NavLink>
-                    )
-                })
+              linkData.map((item)=>{
+                return(
+                  <NavLink end to={item.path} className={({ isActive }) => isActive ? "link-box active" : "link-box"} key={item.title}>
+                      <div className="aside-link"> 
+                          <span className="aside-icon">{item.icon}</span> 
+                          <span>{item.title}</span>
+                      </div>
+                  </NavLink>
+                )
+              })
             }
         </div>
       </aside>

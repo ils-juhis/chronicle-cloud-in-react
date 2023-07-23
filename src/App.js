@@ -1,41 +1,62 @@
 import './App.css';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Login from './pages/Login/Login'
-import SignUp from './pages/SignUp/SignUp'
-import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
-import Dashboard from './components/Dashboard/Dashboard';
-import FormLayout from './components/Form/FormLayout/FormLayout';
-import { useEffect } from 'react';
-import { getCurrentCountry } from './store/actions';
+import { Routes, Route} from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import { getCurrentCountry, loggedIn } from './store/actions';
 import { useDispatch } from 'react-redux';
-import Home from './pages/Home/Home';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {app} from './firebaseConfig'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Loadable from "react-loadable";
 
+import Loader from './components/Loader/Loader';
+const Login = lazy(() => import('./pages/Login/Login'));
+const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword/ForgotPassword'));
+const FormLayout = lazy(() => import('./components/Form/FormLayout/FormLayout'));
+const Home = lazy(() => import('./pages/Home/Home'));
+const ProtectedRoute = lazy(() => import('./route/ProtectedRoute'));
+const Dashboard = Loadable({
+  loader: ()=> import("./components/Dashboard/Dashboard"),
+  loading: Loader
+})
+
+
+const auth = getAuth(app);
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(loggedIn(user))
+      }
+    });
     dispatch(getCurrentCountry());
-  },[dispatch])
+  },[])
   return (
-    <BrowserRouter >
-      <Routes>
-        <Route path="/" element={<FormLayout />}>
-          <Route index element={<Login /> } />
-          <Route path="sign-up" element={<SignUp/> } />
-          <Route path="forgot-pwd" element={<ForgotPassword/> } />
-        </Route>
-        <Route path="/dashboard" element={<Dashboard/>}>
-          <Route index element={<Home /> } />
-          <Route path="manage-teacher" element={<></> } />
-          <Route path="manage-schools" element={<></> } />
-          <Route path="manage-classes" element={<></> } />
-          <Route path="manage-rosters" element={<></> } />
+    <>
+      <Suspense fallback={<Loader/>}>
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<FormLayout />}>
+            <Route index element={<Login /> } />
+            <Route path="sign-up" element={<SignUp/> } />
+            <Route path="forgot-pwd" element={<ForgotPassword/> } />
+          </Route>
+          
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}>
+            <Route index element={<Home /> } />
+            <Route path="manage-teacher" element={<></> } />
+            <Route path="manage-schools" element={<></> } />
+            <Route path="manage-classes" element={<></> } />
+            <Route path="manage-rosters" element={<></> } />
+          </Route>
 
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

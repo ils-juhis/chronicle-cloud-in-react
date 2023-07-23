@@ -55,7 +55,7 @@ function PhoneCustomInput(props) {
                   dispatch(setCurrentCountry(country.countryCode))
                 }
                 if(e.target.type === "tel"){
-                  e.target.value= e.target.value.replace(/ /g, "").replace(/-/g, "");
+                  e.target.value= e.target.value;
                   field.onChange(e);
                   setNumber(e.target.value)
                 }

@@ -24,7 +24,7 @@ function SignUp() {
     if (userInfo) {
       navigate("/dashboard");
     }
-  },[navigate, userInfo])
+  },[userInfo])
 
   
   return (
@@ -48,15 +48,17 @@ function SignUp() {
             termsAndConditions: false,
           }}
 
-          onSubmit={(values)=>{
-            console.log(values)
-            dispatch(signUp(values));
+          onSubmit={async(values,  { resetForm })=>{
+            // console.log(values)
+            const status = await dispatch(signUp(values));
+            resetForm();
+            navigate("/");
           }}>
 
             <FormStep 
               validationSchema={signupStep1Schema(currentCountry)}
               stepName={"Step 1"} 
-              onSubmit={()=>console.log("Step 1")}>
+              onSubmit={()=>{/*console.log("Step 1")*/}}>
                 
               <div className="row">
                 <div className="col-6 gs-1">
@@ -101,7 +103,7 @@ function SignUp() {
             <FormStep  
               validationSchema={signupStep2Schema}
               stepName={"Step 2"} 
-              onSubmit={()=>console.log("Step 2")}>
+              onSubmit={()=>{/*console.log("Step 2")*/}}>
 
               <MUICustomInput 
                 label="School / University / Institute Name*" 

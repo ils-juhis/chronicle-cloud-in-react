@@ -275,7 +275,7 @@ let xValues = schoolData.map((value)=>{return value.schoolName})
 };
 
   useEffect(()=>{  
-    console.log(chartRef)
+    // console.log(chartRef)
   })
 
 
