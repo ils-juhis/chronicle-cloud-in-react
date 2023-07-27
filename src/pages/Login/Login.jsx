@@ -8,12 +8,12 @@ import { Form, Formik } from 'formik'
 import { loginSchema } from '../../schema/AllSchemas'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../store/actions'
+import { login } from '../../store/actions/userActions'
 
 function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  const userInfo = useSelector(state=> state.reducers.userInfo);
+  const {loading, error, userInfo} = useSelector(state=> state.userReducer);
 
   useEffect(()=>{
     if (userInfo) {
@@ -37,40 +37,45 @@ function Login() {
                 resetForm()
               }}
             >
-              <Form>
+              {
+                (formik)=>{
+                  return (
+                    <Form>
+                      <MUICustomInput 
+                        label="Email" 
+                        name="email" 
+                        type="email" 
+                        icon={emailLogo}/>
 
-                <MUICustomInput 
-                  label="Email" 
-                  name="email" 
-                  type="email" 
-                  icon={emailLogo}/>
+                      <MUICustomInput 
+                        label="Password" 
+                        name="password" 
+                        type="password" 
+                        icon={padlock}/>
 
-                <MUICustomInput 
-                  label="Password" 
-                  name="password" 
-                  type="password" 
-                  icon={padlock}/>
+                      <div className="d-flex justify-content-between my-3 rem-forget">
+                        <div className="d-flex align-items-center">
+                          <input className="form-check-input m-0 shadow-none rounded-circle" type="checkbox" id="rememberCheck"/>
+                          <label className="form-check-label ms-2" htmlFor="flexCheckIndeterminate">
+                            Remember Me
+                          </label>
+                        </div>
+                        <Link className="text-primary text-decoration-none fw-bold" to="forgot-pwd">   Forgot Password?    </Link>
+                      </div>
 
-                <div className="d-flex justify-content-between my-3 rem-forget">
-                  <div className="d-flex align-items-center">
-                    <input className="form-check-input m-0 shadow-none rounded-circle" type="checkbox" id="rememberCheck"/>
-                    <label className="form-check-label ms-2" htmlFor="flexCheckIndeterminate">
-                      Remember Me
-                    </label>
-                  </div>
-                  <Link className="text-primary text-decoration-none fw-bold" to="forgot-pwd">   Forgot Password?    </Link>
-                </div>
+                      <button className='text-light p-2 px-3 mt-3 text-uppercase' type='submit' disabled={!(formik.dirty && formik.isValid)}>login</button>
 
-                <button className='text-light p-2 px-3 mt-3 text-uppercase' type='submit'>login</button>
+                      <div className="d-flex justify-content-between pt-4 align-items-center">
+                          <div className="fw-bold" >Don't have an account?</div>
+                          <Link to="sign-up">
+                            <button className="p-2 text-uppercase" id="register">Register now</button>
+                          </Link>
+                      </div>
 
-                <div className="d-flex justify-content-between pt-4 align-items-center">
-                    <div className="fw-bold" >Don't have an account?</div>
-                    <Link to="sign-up">
-                      <button className="p-2 text-uppercase" id="register">Register now</button>
-                    </Link>
-                </div>
-
-              </Form>
+                    </Form>
+                  )
+                }
+              }
             </Formik>
           </div>
         </div>

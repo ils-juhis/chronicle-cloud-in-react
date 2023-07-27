@@ -30,11 +30,11 @@ function SchoolTable() {
                                         <td>{row.schoolName}</td>
                                         <td>{row.email}<br/> {row.phone}</td>
                                         <td>{row.schoolSize}</td>
-                                        <td><span style={{fontSize: "15px", fontWeight: 900}}>{row.dataUsage}</span>/<span className="text-mute">{row.totalData} mb</span></td>
+                                        <td><span style={{fontSize: "15px", fontWeight: 650}}>{row.dataUsage}</span>/<span className="text-mute">{row.totalData} mb</span></td>
                                         <td>{row.status}</td>
                                         <td>
                                             <a href={row.viewLink} className="text-decoration-none d-flex align-items-center">
-                                                <IoMdEye/> &nbsp; View
+                                                <IoMdEye fontSize={"15px"}/> &nbsp; View
                                             </a>
                                         </td>
                                     </tr>

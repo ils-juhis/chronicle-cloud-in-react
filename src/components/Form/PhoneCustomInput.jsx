@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import { setCurrentCountry } from '../../store/actions';
+import { setCurrentCountry } from '../../store/actions/countryActions';
 
 function PhoneCustomInput(props) {
   const [number, setNumber] = useState("")
@@ -15,7 +15,7 @@ function PhoneCustomInput(props) {
     }
   
     const dispatch = useDispatch();
-    const currentCountry  = useSelector((state)=> state.reducers.currentCountry)
+    const {currentCountry}  = useSelector((state)=> state.countryReducer)
 
   useEffect(()=>{
     setNumber(field.value)

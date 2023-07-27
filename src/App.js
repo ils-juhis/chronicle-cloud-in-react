@@ -1,7 +1,6 @@
 import './App.css';
 import { Routes, Route} from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
-import { getCurrentCountry, loggedIn } from './store/actions';
 import { useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +9,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Loadable from "react-loadable";
 
 import Loader from './components/Loader/Loader';
+import { loggedIn } from './store/actions/userActions';
+import { getCurrentCountry } from './store/actions/countryActions';
 const Login = lazy(() => import('./pages/Login/Login'));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword/ForgotPassword'));

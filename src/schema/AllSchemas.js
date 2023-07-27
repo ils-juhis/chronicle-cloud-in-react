@@ -52,6 +52,6 @@ export const signupStep2Schema = Yup.object({
     state: Yup.string().required("*Please enter school name"),
     country: Yup.string().required("*Please enter country"),
     city: Yup.string().required("*Please enter city"),
-    zipCode: Yup.number().required("*Please enter zip code"),
+    zipCode: Yup.number() .typeError("*Zipcode must be a number.").required("*Please enter zip code"),
     termsAndConditions: Yup.boolean().oneOf([true], "*Please accept all terms and conditions.")
 })

@@ -12,7 +12,7 @@ function Home() {
     <div id='home'>
       <div>
         <section className="smallbox-container">
-          <div className="row g-4 mb-4" id="count-box">
+          <div className="row gx-4" id="count-box">
             {
               countData.map((item, i)=>{
                 return (

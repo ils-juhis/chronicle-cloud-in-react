@@ -10,12 +10,12 @@ import MultiStepForm, { FormStep } from '../../components/Form/MultiStepForm'
 import Checkbox from '../../components/Form/Checkbox'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { signUp } from '../../store/actions'
+import { signUp } from '../../store/actions/userActions'
 
 function SignUp() {
   //state
-  const currentCountry  = useSelector((state)=> state.reducers.currentCountry)
-  const userInfo = useSelector(state=> state.reducers.userInfo);
+  const {currentCountry}  = useSelector((state)=> state.countryReducer)
+  const {userInfo} = useSelector(state=> state.userReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function SignUp() {
     if (userInfo) {
       navigate("/dashboard");
     }
-  },[userInfo])
+  },[userInfo, currentCountry])
 
   
   return (

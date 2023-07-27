@@ -6,13 +6,13 @@ import MUICustomInput from '../../components/Form/MUICustomInput'
 import emailLogo from '../../assets/images/email.svg'
 import { forgotPwdSchema } from '../../schema/AllSchemas'
 import { useDispatch, useSelector } from 'react-redux'
-import { forgotPwd } from '../../store/actions'
 import { useNavigate } from 'react-router-dom'
+import { forgotPassword } from '../../store/actions/userActions'
 
 function ForgotPassword() {
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  const userInfo = useSelector(state=> state.reducers.userInfo);
+  const {userInfo} = useSelector(state=> state.userReducer);
 
   useEffect(()=>{
     if (userInfo) {
@@ -32,7 +32,7 @@ function ForgotPassword() {
               initialValues={{ email: ''}}
               validationSchema={forgotPwdSchema}
               onSubmit={(values,  { resetForm })=>{
-                dispatch(forgotPwd(values.email))
+                dispatch(forgotPassword(values.email))
                 resetForm();
               }}>
 

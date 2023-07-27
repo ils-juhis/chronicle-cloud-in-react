@@ -45,7 +45,7 @@ function Dashboard() {
           </div>
           <div className="">
             <Header toggleBtn={toggleBtn} hambugerRef={hambugerRef}/>
-            <div className='p-3 p-lg-4'>
+            <div className='p-3 p-lg-4 pt-0 pt-lg-0'>
               <Outlet/>
             </div>
           </div>

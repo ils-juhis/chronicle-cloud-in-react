@@ -9,7 +9,7 @@ function PieChartCard() {
     <div>
       <div className="graphs pie-chart">
         <div className="heading d-flex justify-content-between"> 
-            <div>Data Usage</div>
+            <div style={{fontWeight:550}}>Data Usage</div>
             <select onChange={(e)=>{setSelectedSchool(e.target.value)}} className="form-select form-select-sm" id="select-school" aria-label=".form-select-sm example" style={{width: "fit-content", fontSize: "12px"}}>
               {
                 schoolData.map((item, index)=>{

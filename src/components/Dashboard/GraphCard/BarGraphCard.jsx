@@ -14,7 +14,8 @@ function BarGraphCard() {
                 <div>
                     <span onClick={()=>{setActive("roster")}}>
                         <a className={active==="roster" ? "active": null} href="#">Roster</a>
-                    </span> | 
+                    </span> 
+                    <span className="mx-2">|</span>
                     <span onClick={()=>{setActive("teachers")}}>
                         <a  href="#" className={active==="teachers" ? "active": null}>Teachers</a>
                     </span>
